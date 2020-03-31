@@ -4,13 +4,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    image.load("cat.jpg");
+    image.load("background.png");
     imgWidth = image.getWidth();
     imgHeight = image.getHeight();
     numPixels = imgWidth * imgHeight;
     updatedImage.allocate(imgWidth, imgHeight, OF_IMAGE_COLOR);
 
-    outline.load("outline.jpg");
+    outline.load("outline.png");
     outline.setImageType(OF_IMAGE_GRAYSCALE);
 
     object.load("object.png");
@@ -28,7 +28,7 @@ void ofApp::setup() {
     gui.setup();
     gui.add(eps.setup("eps", 10.0, 0.0, 20.0));
     gui.add(z.setup("z", 1, 0.0, 1.0));
-    gui.add(dampening.setup("dampening", 0.9999999999, 0.9, 0.99999999999999999999));
+    gui.add(dampening.setup("dampening", 0.99999, 0.9, 0.9999999999));
     gui.add(factor.setup("factor", 100, 0, 200));
 
     applyOutline();
