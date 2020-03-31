@@ -1,20 +1,30 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 	public:
 		void setup();
 		void update();
 		void draw();
-		
-		void mouseDragged(int x, int y, int button);
+ 
 		void mousePressed(int x, int y, int button);
-		
+ 
 	private:
-		ofFbo curr, prev;
-		ofPixels currPixels, prevPixels;
-		ofImage currImage, prevImage;
+		void applyOutline();
+        float getVal(int x, int y);
+        void ripple();
+		int pixelIndex(int x, int y);
+    
+        int imgWidth, imgHeight, numPixels;
+        ofImage image, updatedImage, outline, object;
+    
+		// ripple buffers
+        vector<float> prev, curr, temp;
 
-		double dampening = 0.9999999999;
+		ofVec3f light = ofVec3f(1, 1, 0);
+
+		ofxPanel gui;
+		ofxFloatSlider eps, z, dampening, factor;
 };
